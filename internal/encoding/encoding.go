@@ -12,7 +12,7 @@ const maxValueToEncode = uint16((1 << 12) - 1)
 
 func Encoding(valueToEncode uint16) (uint32, error) {
 	if valueToEncode > maxValueToEncode {
-		valueRangeError := fmt.Sprintf("[encoding/ValueEncoding]: Value to encode %d, expected values are [0, 4095]", valueToEncode)
+		valueRangeError := fmt.Sprintf("[encoding/Encoding]: Value to encode %d, expected values are [0, 4095]", valueToEncode)
 		return 0, errors.New(valueRangeError)
 	}
 

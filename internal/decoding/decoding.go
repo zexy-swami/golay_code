@@ -9,7 +9,7 @@ const maxValueToDecode = uint32((1 << 23) - 1)
 
 func Decoding(valueToDecode uint32) (uint16, error) {
 	if valueToDecode > maxValueToDecode {
-		valueRangeError := fmt.Sprintf("[decoding/ValueDecoding]: Value to decode %d, expected values are [0, 8388607]", valueToDecode)
+		valueRangeError := fmt.Sprintf("[decoding/Decoding]: Value to decode %d, expected values are [0, 8388607]", valueToDecode)
 		return 0, errors.New(valueRangeError)
 	}
 
