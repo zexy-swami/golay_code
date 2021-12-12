@@ -22,13 +22,14 @@ func FileDecoding(sourceFile *os.File, destinationFile *os.File, useVerboseMode 
 
 	for i := range bytesFromSourceFile {
 		if useVerboseMode {
-			if i >= int((countOfBytesFromSource/100)*25) && flag25 {
+			switch {
+			case i >= int((countOfBytesFromSource/100)*25) && flag25:
 				fmt.Println(statusMessage25)
 				flag25 = false
-			} else if i >= int((countOfBytesFromSource/100)*50) && flag50 {
+			case i >= int((countOfBytesFromSource/100)*50) && flag50:
 				fmt.Println(statusMessage50)
 				flag50 = false
-			} else if i >= int((countOfBytesFromSource/100)*75) && flag75 {
+			case i >= int((countOfBytesFromSource/100)*75) && flag75:
 				fmt.Println(statusMessage75)
 				flag75 = false
 			}
