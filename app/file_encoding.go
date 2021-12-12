@@ -16,19 +16,19 @@ func FileEncoding(sourceFile *os.File, destinationFile *os.File, useVerboseMode 
 		return err
 	}
 
-	slcLen := float64(len(bytesFromSourceFile))
+	countOfBytesFromSource := float64(len(bytesFromSourceFile))
 	bytesForDestinationFile := make([]byte, 0)
 
 	for i := range bytesFromSourceFile {
 		if useVerboseMode {
-			if i >= int((slcLen/100)*25) && flag25 {
-				fmt.Println("25% of sending is done.")
+			if i >= int((countOfBytesFromSource/100)*25) && flag25 {
+				fmt.Println(statusMessage25)
 				flag25 = false
-			} else if i >= int((slcLen/100)*50) && flag50 {
-				fmt.Println("50% of sending is done.")
+			} else if i >= int((countOfBytesFromSource/100)*50) && flag50 {
+				fmt.Println(statusMessage50)
 				flag50 = false
-			} else if i >= int((slcLen/100)*75) && flag75 {
-				fmt.Println("75% of sending is done.")
+			} else if i >= int((countOfBytesFromSource/100)*75) && flag75 {
+				fmt.Println(statusMessage75)
 				flag75 = false
 			}
 		}
@@ -41,8 +41,8 @@ func FileEncoding(sourceFile *os.File, destinationFile *os.File, useVerboseMode 
 		encodedValueAsByteSlc := make([]byte, 4)
 		binary.LittleEndian.PutUint32(encodedValueAsByteSlc, encodedValue)
 
-		for _, encodedByte := range encodedValueAsByteSlc {
-			bytesForDestinationFile = append(bytesForDestinationFile, encodedByte)
+		for _, encodedByteToWrite := range encodedValueAsByteSlc {
+			bytesForDestinationFile = append(bytesForDestinationFile, encodedByteToWrite)
 		}
 	}
 
@@ -52,9 +52,9 @@ func FileEncoding(sourceFile *os.File, destinationFile *os.File, useVerboseMode 
 	}
 
 	if countOfWrittenBytes != len(bytesForDestinationFile) {
-		return errors.New("wrong count of bytes have been written")
+		return errors.New("wrong count of bytes have been written to destination file")
 	}
 
-	fmt.Println("100% of sending is done.")
+	fmt.Println(statusMessage100)
 	return nil
 }
