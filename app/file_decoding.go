@@ -57,7 +57,7 @@ func FileDecoding(sourceFile *os.File, destinationFile *os.File, useVerboseMode 
 	}
 
 	if countOfWrittenBytes != len(bytesForDestinationFile) {
-		return errors.New("wrong count of bytes have been written to destination file")
+		return errors.New(wrongBytesCountMessage)
 	}
 
 	fmt.Println(statusMessage100)
