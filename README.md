@@ -9,7 +9,6 @@ This code's parameters are [23, 12, 7]:
 7  - Hamming distance.
 ```
 
-
 ## Using example
 ###### Encoding
 Encoding example presented in ***/example/file_encoding/main.go***:
@@ -32,7 +31,7 @@ destinationFD, _ := os.Create("./destination_file.txt")
 
 err := app.CreateFileWithNoise(sourceFD, destinationFD)
 ```
-Function ***CreateFileWithNoise*** placed in ***/app/file_noise_adding.go***
+Function ***CreateFileWithNoise*** placed in ***/app/file_noise_adding.go***.
 
 ###### Decoding
 Decoding example presented in ***/example/file_decoding/main.go***:
